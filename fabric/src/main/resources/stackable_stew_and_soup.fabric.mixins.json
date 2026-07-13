@@ -13,6 +13,7 @@
   ],
   "injectors": {
     "defaultRequire": 1
-  }
+  },
+  "plugin": "io.github.jason13official.stackable_stew_and_soup.SSASMixinPlugin"
 }
   
