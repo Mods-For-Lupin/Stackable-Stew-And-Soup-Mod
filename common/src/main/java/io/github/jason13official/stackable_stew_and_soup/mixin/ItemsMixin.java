@@ -1,6 +1,7 @@
 package io.github.jason13official.stackable_stew_and_soup.mixin;
 
 import io.github.jason13official.stackable_stew_and_soup.impl.common.ModConfig;
+import io.github.jason13official.stackable_stew_and_soup.platform.Services;
 import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -12,6 +13,14 @@ import org.spongepowered.asm.mixin.injection.Slice;
 
 @Mixin(Items.class)
 public class ItemsMixin {
+
+  static {
+    if (!ModConfig.early) {
+
+      ModConfig.load(Services.PLATFORM.getConfigDirectory());
+      ModConfig.early = true;
+    }
+  }
 
   // redirects are targeting class initialization, also known as the static initializer
 

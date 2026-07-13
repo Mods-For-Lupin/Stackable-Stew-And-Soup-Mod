@@ -12,6 +12,8 @@ import java.util.function.Supplier;
 
 public class ModConfig {
 
+  public static boolean early = false;
+
   private static final String FILENAME = Constants.MOD_ID + "-server.toml";
 
   private static int STACKABLE_AMOUNT_VALUE = 8;

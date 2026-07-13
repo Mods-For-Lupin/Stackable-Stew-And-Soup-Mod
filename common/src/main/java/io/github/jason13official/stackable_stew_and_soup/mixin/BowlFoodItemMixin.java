@@ -1,6 +1,8 @@
 package io.github.jason13official.stackable_stew_and_soup.mixin;
 
+import io.github.jason13official.stackable_stew_and_soup.impl.common.ModConfig;
 import io.github.jason13official.stackable_stew_and_soup.impl.common.util.FinishUsingItemLogic;
+import io.github.jason13official.stackable_stew_and_soup.platform.Services;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.food.FoodProperties;
@@ -15,6 +17,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Item.class)
 public class BowlFoodItemMixin {
+
+  static {
+    if (!ModConfig.early) {
+
+      ModConfig.load(Services.PLATFORM.getConfigDirectory());
+      ModConfig.early = true;
+    }
+  }
 
   @Inject(at = @At("TAIL"), method = "finishUsingItem", cancellable = true)
   private void ssas$finishUsingItem(ItemStack stack, Level level, LivingEntity living, CallbackInfoReturnable<ItemStack> cir) {
