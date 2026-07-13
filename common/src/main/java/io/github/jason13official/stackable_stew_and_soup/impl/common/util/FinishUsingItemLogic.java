@@ -1,6 +1,5 @@
 package io.github.jason13official.stackable_stew_and_soup.impl.common.util;
 
-import javax.annotation.Nullable;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -41,14 +40,12 @@ public class FinishUsingItemLogic {
     }
   }
 
-  @Nullable
   @SuppressWarnings("all") // return value is never used, except for advancements (unrelated to this)
   public static ItemEntity vulcan$drop(LivingEntity living, ItemStack itemStack, boolean includeThrowerName) {
     return vulcan$drop(living, itemStack, false, includeThrowerName);
   }
 
   /// copying vanilla player logic
-  @Nullable
   public static ItemEntity vulcan$drop(LivingEntity living, ItemStack droppedItem, boolean dropAround, boolean includeThrowerName) {
     if (droppedItem.isEmpty()) {
       return null;
