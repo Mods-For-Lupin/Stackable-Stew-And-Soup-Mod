@@ -3,6 +3,7 @@ package io.github.jason13official.stackable_stew_and_soup.impl.common;
 import com.electronwill.nightconfig.core.Config;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import io.github.jason13official.stackable_stew_and_soup.Constants;
+import io.github.jason13official.stackable_stew_and_soup.platform.Services;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,6 +20,10 @@ public class ModConfig {
       new ConfigGetterSetter<>("stackable_amount", () -> STACKABLE_AMOUNT_VALUE, i -> STACKABLE_AMOUNT_VALUE = i);
 
   public static void load(Path configDir) {
+
+    if (Services.PLATFORM.isDevelopmentEnvironment()) {
+      System.out.println("Loading config, possibly before mixins are applied?");
+    }
 
     File configDirectory = new File(configDir.toUri());
     if (!configDirectory.isDirectory() && !configDirectory.mkdirs()) {
